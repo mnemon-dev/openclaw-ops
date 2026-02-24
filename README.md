@@ -23,6 +23,10 @@ Telegram / WebChat ──▶ OpenClaw ──▶─┼──▶ claude-max-api-pr
 
 > Both Claude proxy backends share the same Max/Pro subscription and serve as fallbacks for each other.
 
+### About claude-max-api-proxy
+
+claude-max-api-proxy works by spawning the official Claude Code CLI locally to handle each request. Since the CLI runs in its own isolated environment, OpenClaw-installed skills and plugins are not available through this backend. On the other hand, all traffic flows through the native CLI and is indistinguishable from normal Claude Code usage.
+
 ## Prerequisites
 
 ```bash

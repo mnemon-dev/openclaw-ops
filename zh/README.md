@@ -23,6 +23,10 @@ Telegram / WebChat ──▶ OpenClaw ──▶─┼──▶ claude-max-api-pr
 
 > 两个 Claude proxy 后端走同一个 Max/Pro 订阅，互为备份。
 
+### 关于 claude-max-api-proxy
+
+claude-max-api-proxy 通过拉起本地官方 Claude Code CLI 来执行请求。由于 CLI 运行在独立环境中，OpenClaw 安装的 skills 和 plugins 无法在此后端生效。但所有流量都经由原生 CLI 发出，与正常的 Claude Code 使用完全一致。
+
 ## 前置条件
 
 ```bash
