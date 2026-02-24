@@ -1,0 +1,26 @@
+[Unit]
+Description=OpenClaw Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=openclaw
+Group=openclaw
+WorkingDirectory=/home/openclaw
+EnvironmentFile=/home/openclaw/clawops/.env
+ExecStart=/usr/bin/env openclaw gateway --config /home/openclaw/.openclaw/openclaw.json
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=openclaw-gateway
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/openclaw/.openclaw
+
+[Install]
+WantedBy=multi-user.target

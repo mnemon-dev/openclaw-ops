@@ -1,0 +1,25 @@
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+openclaw.json
+
+# Backups
+backups/
+*.bak
+*.tar.gz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs
+*.log
+

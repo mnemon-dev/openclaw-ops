@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>ai.openclaw.claude-max</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>{{REPO_DIR}}/scripts/start-claude-max.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>{{HOME}}</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/claude-max-api.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/claude-max-api.stderr.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>{{HOME}}</string>
+        <key>USER</key>
+        <string>{{USER}}</string>
+        <key>LOGNAME</key>
+        <string>{{USER}}</string>
+        <key>SHELL</key>
+        <string>/bin/zsh</string>
+        <key>TMPDIR</key>
+        <string>/tmp</string>
+        <key>PATH</key>
+        <string>{{HOME}}/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+</dict>
+</plist>

@@ -1,0 +1,120 @@
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "claude-proxy": {
+        "baseUrl": "http://127.0.0.1:3456",
+        "apiKey": "not-needed",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "claude-opus-4-6",
+            "name": "Claude Opus 4.6",
+            "contextWindow": 200000,
+            "maxTokens": 16384,
+            "reasoning": true
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "name": "Claude Sonnet 4.6",
+            "contextWindow": 200000,
+            "maxTokens": 16384,
+            "reasoning": true
+          },
+          {
+            "id": "claude-haiku-4-5-20251001",
+            "name": "Claude Haiku 4.5",
+            "contextWindow": 200000,
+            "maxTokens": 16384
+          }
+        ]
+      },
+      "claude-max": {
+        "baseUrl": "http://127.0.0.1:3457/v1",
+        "apiKey": "not-needed",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "claude-opus-4",
+            "name": "Claude Opus 4 (Max)",
+            "contextWindow": 200000,
+            "maxTokens": 16384,
+            "reasoning": true
+          },
+          {
+            "id": "claude-sonnet-4",
+            "name": "Claude Sonnet 4 (Max)",
+            "contextWindow": 200000,
+            "maxTokens": 16384,
+            "reasoning": true
+          },
+          {
+            "id": "claude-haiku-4",
+            "name": "Claude Haiku 4 (Max)",
+            "contextWindow": 200000,
+            "maxTokens": 16384
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "model": {
+        "primary": "claude-proxy/claude-sonnet-4-6"
+      },
+      "models": {
+        "claude-proxy/claude-opus-4-6": { "alias": "opus" },
+        "claude-proxy/claude-sonnet-4-6": { "alias": "sonnet" },
+        "claude-proxy/claude-haiku-4-5-20251001": { "alias": "haiku" },
+        "claude-max/claude-opus-4": { "alias": "max-opus" },
+        "claude-max/claude-sonnet-4": { "alias": "max-sonnet" },
+        "claude-max/claude-haiku-4": { "alias": "max-haiku" },
+        "qwen-portal/coder-model": { "alias": "qwen-coder" },
+        "qwen-portal/vision-model": { "alias": "qwen-vision" }
+      },
+      "subagents": {
+        "model": "claude-proxy/claude-haiku-4-5-20251001"
+      }
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "<YOUR_GATEWAY_TOKEN>"
+    }
+  },
+  "channels": {
+    "telegram": {
+      "dmPolicy": "allowlist",
+      "groupPolicy": "allowlist",
+      "allowFrom": ["<YOUR_TELEGRAM_USER_ID>"],
+      "streamMode": "partial"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "mnemon": {
+        "config": {
+          "compact": false,
+          "nudge": true,
+          "remind": true
+        },
+        "enabled": true
+      },
+      "telegram": {
+        "enabled": true
+      }
+    }
+  }
+}
